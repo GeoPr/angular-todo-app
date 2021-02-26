@@ -1,0 +1,32 @@
+<div *ngIf="!isLoading; else loader">
+  <ul class="todos" *ngIf="todosService.todos.length; else empty">
+    <li
+      *ngFor="let todo of todosService.todos; let i = index"
+      class="todos__item"
+    >
+      <div class="todos__box">
+        <label class="todos__label">
+          <input
+            type="checkbox"
+            class="todos__checkbox"
+            [checked]="todo.completed"
+            (change)="changeTodo(todo.id)"
+          />
+          <span class="todos__checkbox-span"></span>
+        </label>
+        <span [class.completed]="todo.completed" class="todos__title">
+          {{ todo.title }}
+        </span>
+      </div>
+      <button class="todos__button" (click)="removeTodo(todo.id)">
+        &times;
+      </button>
+    </li>
+  </ul>
+  <ng-template #empty>
+    <p>There is nothing yet</p>
+  </ng-template>
+</div>
+<ng-template #loader>
+  <p>Loading...</p>
+</ng-template>

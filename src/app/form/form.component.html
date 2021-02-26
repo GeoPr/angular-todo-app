@@ -1,0 +1,9 @@
+<form class="form" (submit)="addTodo($event)">
+  <input
+    type="text"
+    class="form__input"
+    [(ngModel)]="inputValue"
+    [ngModelOptions]="{ standalone: true }"
+  />
+  <button type="submit" class="form__button">Add</button>
+</form>
